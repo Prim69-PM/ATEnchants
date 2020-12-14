@@ -8,7 +8,7 @@ use pocketmine\item\enchantment\MeleeWeaponEnchantment;
 use pocketmine\Player;
 use xPrim69x\ATEnchants\Main;
 
-class BleedEnchant extends MeleeWeaponEnchantment {
+class GooeyEnchant extends MeleeWeaponEnchantment {
 
 	public function isApplicableTo(Entity $victim) : bool{
 		return $victim instanceof Living;
