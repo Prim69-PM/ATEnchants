@@ -21,6 +21,8 @@ class GooeyEnchant extends MeleeWeaponEnchantment {
 	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
     		if($player instanceof Player && $d instanceof Player){
 			if(mt_rand(1,40) <= ($enchantmentLevel * 2)){
+				if (!$entity->isClosed() && !$entity->isFlaggedForDespawn())
+					$entity->setMotion(new Vector3($entity->getMotion()->x, $enchantmentLevel * .15 + .75, $entity->getMotion()->z));
 			}
 		}
 	}
