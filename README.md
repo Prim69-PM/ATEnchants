@@ -4,8 +4,5 @@
 "You're gonna crash the server with bleed particles"
 "You're retarded" - ShortyNO
 
-[![](https://poggit.pmmp.io/shield.state/CustomEnchantsX)](https://poggit.pmmp.io/p/CustomEnchantsX)
-<a href="https://poggit.pmmp.io/p/CustomEnchantsX"><img src="https://poggit.pmmp.io/shield.state/CustomEnchantsX"></a>
-
-[![](https://poggit.pmmp.io/shield.api/CustomEnchantsX)](https://poggit.pmmp.io/p/CustomEnchantsX)
-<a href="https://poggit.pmmp.io/p/CustomEnchantsX"><img src="https://poggit.pmmp.io/shield.api/CustomEnchantsX"></a>
+[![](https://poggit.pmmp.io/shield.state/ATEnchants)](https://poggit.pmmp.io/p/ATEnchants)
+<a href="https://poggit.pmmp.io/p/ATEnchants"><img src="https://poggit.pmmp.io/shield.state/ATEnchants"></a>
