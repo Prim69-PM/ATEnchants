@@ -19,6 +19,9 @@ class GooeyEnchant extends MeleeWeaponEnchantment {
 	}
 
 	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-    //TODO: Do this
+    		if($player instanceof Player && $d instanceof Player){
+			if(mt_rand(1,40) <= ($enchantmentLevel * 2)){
+			}
+		}
 	}
 }
