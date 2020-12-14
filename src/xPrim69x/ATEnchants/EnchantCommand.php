@@ -27,6 +27,7 @@ class EnchantCommand extends Command{
 		"Daze" => 3,
 		"Frost" => 3,
 		"Hades" => 3,
+		"Gooey" => 3,
 		"Poison" => 2,
 		"Lifesteal" => 2,
 		"Uplift" => 1,
