@@ -5,6 +5,7 @@ use pocketmine\item\enchantment\Enchantment;
 use xPrim69x\ATEnchants\enchants\sword\{BleedEnchant,
 	DazeEnchant,
 	FrostEnchant,
+	GooeyEnchant,
 	HadesEnchant,
 	KaboomEnchant,
 	LifestealEnchant,
@@ -62,6 +63,7 @@ class CustomEnchantManager {
 		"scorch" => 84,
 		"adrenaline" => 85,
 		"feed" => 86,
+		"gooey" => 87,
 	];
 
 	public static function init(Main $main){
@@ -78,6 +80,7 @@ class CustomEnchantManager {
 		Enchantment::registerEnchantment(new DazeEnchant(76,"Daze",self::RARITY_UNCOMMON, self::SLOT_SWORD, self::SLOT_NONE,3));
 		Enchantment::registerEnchantment(new FrostEnchant(77,"Frost",self::RARITY_COMMON, self::SLOT_SWORD, self::SLOT_NONE,3));
 		Enchantment::registerEnchantment(new OOFEnchant(78,"OOF",self::RARITY_COMMON, self::SLOT_SWORD, self::SLOT_NONE,2));
+		Enchantment::registerEnchantment(new GooeyEnchant(79,"Gooey",self::RARITY_MYTHIC, self::SLOT_SWORD, self::SLOT_NONE,3));
 
 		//Armor Toggleable Enchants
 		Enchantment::registerEnchantment(new GearsEnchant(79,"Gears",self::RARITY_RARE,self::SLOT_FEET,self::SLOT_NONE,2));
