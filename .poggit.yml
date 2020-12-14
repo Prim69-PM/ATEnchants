@@ -5,5 +5,5 @@ branches:
 projects:
   ATEnchants:
     path: ""
-icon: meta/icon.png
+    icon: meta/icon.png
 ...
