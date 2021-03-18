@@ -1,0 +1,9 @@
+name: ATEnchants
+author: xPrim69x
+description: AT enchants by xPrim69x
+version: 1.0.0
+main: xPrim69x\ATEnchants\Main
+api: [3.0.0]
+Permissions:
+ at.enchant:
+  description: Enchant items
