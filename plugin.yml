@@ -4,7 +4,7 @@ description: My Custom Enchants plugin made to replicate AvengeTechs prison ench
 version: 1.0.0
 main: xPrim69x\ATEnchants\Main
 api: [3.0.0]
-mcpe-protocol: [408, 419, 422]
+mcpe-protocol: [408, 419, 422, 428]
 permissions:
   atenchant.command:
     default: op
