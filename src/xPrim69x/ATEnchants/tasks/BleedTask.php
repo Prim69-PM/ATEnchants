@@ -24,7 +24,6 @@ class BleedTask extends Task{
 
 	//Thanks BoomYourBang for helping me with this task
 	public function onRun(int $currentTick){
-		if(!in_array($this->player->getName(), $this->main->bleeding)) return;
 		$this->runs--;
 		if($this->runs <= 0 || !$this->player->isAlive() || !$this->player->isOnline()){
 			unset($this->main->bleeding[$this->player->getName()]);
