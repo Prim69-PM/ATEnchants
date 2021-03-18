@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Prim69/ATEnchants
+build-by-default: true
+branches:
+- main
+projects:
+  ATEnchants:
+    path: ""
+    icon: meta/icon.png
+...
