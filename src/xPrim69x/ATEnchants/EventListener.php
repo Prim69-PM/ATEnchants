@@ -92,28 +92,22 @@ class EventListener implements Listener{
 		if (!$player) return;
 		if ($player instanceof Player) {
 			$item = $player->getInventory()->getItemInHand();
-			if ($player->getLevel() === $arrow->getLevel()) {
-				if (!$item->hasEnchantment(83)) return;
-				$player->teleport($arrow->getPosition());
-			}
+			if (!$item->hasEnchantment(83)) return;
+			if ($player->getLevel() === $arrow->getLevel()) $player->teleport($arrow->getPosition());
 		}
 	}
 
 	public function onBreak(BlockBreakEvent $event){
 		$player = $event->getPlayer();
-		if(!$player) return;
+		if(!$player instanceof Player) return;
 		$item = $player->getInventory()->getItemInHand();
 		if(!$item instanceof Pickaxe) return;
-		if($player instanceof Player){
-			if($item->hasEnchantment(86)) {
-				$enchantmentLevel = $item->getEnchantment(86)->getLevel();
-				if(mt_rand(1,20) <= $enchantmentLevel){
-					if($player->getFood() < 20){
-						$player->setFood(min(20, $player->getFood() + mt_rand(7, 10)));
-					}
-				}
+		if($item->hasEnchantment(86)) {
+			$enchantmentLevel = $item->getEnchantment(86)->getLevel();
+			if(mt_rand(1,20) <= $enchantmentLevel){
+				if($player->getFood() < 20) $player->setFood(min(20, $player->getFood() + mt_rand(7, 10)));
 			}
 		}
 	}
-
+	
 }
