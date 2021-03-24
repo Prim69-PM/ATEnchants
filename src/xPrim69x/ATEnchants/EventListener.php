@@ -77,9 +77,7 @@ class EventListener implements Listener{
 		foreach ($contents as $armor) {
 			if ($armor instanceof Armor) {
 				if ($armor->hasEnchantment(85)) {
-					if ($player->getHealth() <= 6) {
-						$player->addEffect(new EffectInstance(Effect::getEffect(1), 140, 0));
-					}
+					if ($player->getHealth() <= 6) $player->addEffect(new EffectInstance(Effect::getEffect(1), 140, 0));
 				}
 			}
 		}
