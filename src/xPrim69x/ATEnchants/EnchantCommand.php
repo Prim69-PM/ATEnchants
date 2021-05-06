@@ -110,19 +110,15 @@ class EnchantCommand extends Command implements PluginIdentifiableCommand {
 				return;
 			}
 
-			$level = 1;
+			$level = (int) $args[3] ?? 1;
 			if (isset($args[3])) {
 				$max = $enchantment->getMaxLevel();
-				$level = (int)$args[3];
 				if ($level > $max) {
 					$sender->sendMessage(TF::RED . "That level is too high! The most it can be is $max");
 					return;
 				}
 				if ($level < 1) {
 					$sender->sendMessage(TF::RED . "That level is too low! The least it can be is 1");
-					return;
-				}
-				if ($level === null) {
 					return;
 				}
 			}

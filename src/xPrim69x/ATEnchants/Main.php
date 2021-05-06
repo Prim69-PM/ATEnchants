@@ -54,7 +54,7 @@ class Main extends PluginBase {
 		$this->saveLevels();
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
-		$this->getServer()->getCommandMap()->register($this->getName(), new EnchantCommand());
+		$this->getServer()->getCommandMap()->register($this->getName(), new EnchantCommand($this));
 		CustomEnchantManager::init();
 		self::$instance = $this;
 	}
