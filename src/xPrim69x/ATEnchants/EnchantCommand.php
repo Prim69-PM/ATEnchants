@@ -6,9 +6,11 @@ namespace xPrim69x\ATEnchants;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 use pocketmine\utils\TextFormat as TF;
 use function array_filter;
 use function count;
@@ -16,21 +18,25 @@ use function is_null;
 use function is_numeric;
 use function strtolower;
 
-class EnchantCommand extends Command{
+class EnchantCommand extends Command implements PluginIdentifiableCommand {
 
-	const RARITY_COLORS = [
+	/** @var Main */
+	private $main;
+
+	public const RARITY_COLORS = [
 		Enchantment::RARITY_COMMON => TF::GREEN,
 		Enchantment::RARITY_UNCOMMON => TF::DARK_GREEN,
 		Enchantment::RARITY_RARE => TF::YELLOW,
 		Enchantment::RARITY_MYTHIC => TF::GOLD
 	];
 
-	public function __construct(){
+	public function __construct(Main $main){
 		parent::__construct(
 			"at",
 			TF::AQUA . "Enchants!",
 			TF::GRAY . "Usage: " . TF::RED . "/at enchant <player> <enchantment> [level]"
 		);
+		$this->main = $main;
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
@@ -140,4 +146,9 @@ class EnchantCommand extends Command{
 			$sender->sendMessage(TF::GRAY . "Usage: " . TF::RED . "/at <list:enchant>");
 		}
 	}
+
+	public function getPlugin() : Plugin {
+		return $this->main;
+	}
+
 }
