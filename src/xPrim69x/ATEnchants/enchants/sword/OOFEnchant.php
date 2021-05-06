@@ -8,6 +8,7 @@ use pocketmine\item\enchantment\MeleeWeaponEnchantment;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\Player;
 use pocketmine\Server;
+use function mt_rand;
 
 class OOFEnchant extends MeleeWeaponEnchantment {
 
@@ -19,8 +20,8 @@ class OOFEnchant extends MeleeWeaponEnchantment {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-		if ($player instanceof Player && $d instanceof Player) {
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 40) <= $enchantmentLevel) {
 				foreach (Server::getInstance()->getOnlinePlayers() as $players) {
 					$pk = new PlaySoundPacket();

@@ -8,6 +8,7 @@ use pocketmine\entity\Entity;
 use pocketmine\entity\Living;
 use pocketmine\item\enchantment\MeleeWeaponEnchantment;
 use pocketmine\Player;
+use function mt_rand;
 
 class PoisonEnchant extends MeleeWeaponEnchantment {
 
@@ -19,10 +20,10 @@ class PoisonEnchant extends MeleeWeaponEnchantment {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-		if ($player instanceof Player && $d instanceof Player) {
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 40) <= $enchantmentLevel) {
-				$player->addEffect(new EffectInstance(Effect::getEffect(19), $enchantmentLevel * 120, 0));
+				$victim->addEffect(new EffectInstance(Effect::getEffect(19), $enchantmentLevel * 120, 0));
 			}
 		}
 	}

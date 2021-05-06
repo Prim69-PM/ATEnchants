@@ -7,6 +7,7 @@ use pocketmine\entity\Living;
 use pocketmine\item\enchantment\MeleeWeaponEnchantment;
 use pocketmine\level\particle\HugeExplodeParticle;
 use pocketmine\Player;
+use function mt_rand;
 
 class KaboomEnchant extends MeleeWeaponEnchantment {
 
@@ -18,20 +19,20 @@ class KaboomEnchant extends MeleeWeaponEnchantment {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-		if ($player instanceof Player && $d instanceof Player) {
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 50) <= $enchantmentLevel) {
 				$level = 0.8;
 				if ($enchantmentLevel <= 2) {
 					$level = 0.6;
 				}
-				$player->getLevel()->addParticle(new HugeExplodeParticle($player));
-				$player->getLevel()->broadcastLevelSoundEvent($player, 48);
-				$player->knockBack($d, 0, $player->x - $d->x, $player->z - $d->z, $level);
-				if ($player->getHealth() < 10) {
-					$player->setHealth($player->getHealth() - ($enchantmentLevel * 1.33));
+				$victim->getLevel()->addParticle(new HugeExplodeParticle($victim));
+				$victim->getLevel()->broadcastLevelSoundEvent($victim, 48);
+				$victim->knockBack($attacker, 0, $victim->x - $attacker->x, $victim->z - $attacker->z, $level);
+				if ($victim->getHealth() < 10) {
+					$victim->setHealth($victim->getHealth() - ($enchantmentLevel * 1.33));
 				} else {
-					$player->setHealth($player->getHealth() - ($enchantmentLevel * 2));
+					$victim->setHealth($victim->getHealth() - ($enchantmentLevel * 2));
 				}
 			}
 		}

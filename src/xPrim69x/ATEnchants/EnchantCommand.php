@@ -10,6 +10,11 @@ use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;
+use function array_filter;
+use function count;
+use function is_null;
+use function is_numeric;
+use function strtolower;
 
 class EnchantCommand extends Command{
 
@@ -39,21 +44,13 @@ class EnchantCommand extends Command{
 		}
 		if($args[0] == "list") {
 			$sender->sendMessage(TF::RED . "Sword Enchants:");
-			foreach(Main::$swordEnchants as $ench => $level){
-				$sender->sendMessage(TF::GOLD . "$ench ($level)");
-			}
+			foreach(Main::$swordEnchants as $ench => $level) $sender->sendMessage(TF::GOLD . "$ench ($level)");
 			$sender->sendMessage(TF::EOL . TF::RED . "Armor Enchants:");
-				foreach(Main::$armorEnchants as $ench => $level){
-					$sender->sendMessage(TF::GOLD . "$ench ($level)");
-			}
+			foreach(Main::$armorEnchants as $ench => $level) $sender->sendMessage(TF::GOLD . "$ench ($level)");
 			$sender->sendMessage(TF::EOL . TF::RED . "Bow Enchants:");
-			foreach(Main::BOW_ENCHANTS as $ench => $level){
-				$sender->sendMessage(TF::GOLD . "$ench ($level)");
-			}
+			foreach(Main::BOW_ENCHANTS as $ench => $level) $sender->sendMessage(TF::GOLD . "$ench ($level)");
 			$sender->sendMessage(TF::EOL . TF::RED . "Pickaxe Enchants:");
-			foreach(Main::PICKAXE_ENCHANTS as $ench => $level){
-				$sender->sendMessage(TF::GOLD . "$ench ($level)");
-			}
+			foreach(Main::PICKAXE_ENCHANTS as $ench => $level) $sender->sendMessage(TF::GOLD . "$ench ($level)");
 			return;
 		}
 		if($args[0] == "enchant"){
@@ -69,7 +66,7 @@ class EnchantCommand extends Command{
 
 			$player = $sender->getServer()->getPlayer($args[1]);
 
-			if($player === null){
+			if(is_null($player)){
 				$sender->sendMessage(TF::RED . "That player is not online!");
 				return;
 			}

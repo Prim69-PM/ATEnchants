@@ -8,7 +8,7 @@ use pocketmine\scheduler\Task;
 use pocketmine\Player;
 use xPrim69x\ATEnchants\Main;
 
-class BleedTask extends Task{
+class BleedTask extends Task {
 
 	public $main;
 
@@ -27,11 +27,12 @@ class BleedTask extends Task{
 		$this->runs--;
 		if($this->runs <= 0 || !$this->player->isAlive() || !$this->player->isOnline()){
 			unset($this->main->bleeding[$this->player->getName()]);
-			$this->main->getScheduler()->cancelTask($this->getTaskId());
+			$this->getHandler()->cancel();
 			return;
 		}
 		$level = $this->player->getLevel();
 		$level->addParticle(new DestroyBlockParticle($this->player->add(0,1), Block::get(236,14)));
 		$this->player->setHealth($this->player->getHealth() - 1);
 	}
+
 }

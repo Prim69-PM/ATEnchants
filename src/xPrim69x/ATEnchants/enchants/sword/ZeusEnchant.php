@@ -5,9 +5,9 @@ namespace xPrim69x\ATEnchants\enchants\sword;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Living;
 use pocketmine\item\enchantment\MeleeWeaponEnchantment;
-use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\Player;
+use function mt_rand;
 
 class ZeusEnchant extends MeleeWeaponEnchantment {
 
@@ -19,15 +19,15 @@ class ZeusEnchant extends MeleeWeaponEnchantment {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-		if ($player instanceof Player && $d instanceof Player) {
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 40) <= ($enchantmentLevel * 2)) {
 				$light = new AddActorPacket();
 				$light->type = "minecraft:lightning_bolt";
 				$light->entityRuntimeId = Entity::$entityCount++;
-				$light->position = new Vector3($player->getX(), $player->getY(), $player->getZ());
-				$player->getServer()->broadcastPacket($player->getLevel()->getPlayers(), $light);
-				$player->setHealth($player->getHealth() - ($enchantmentLevel * 2));
+				$light->position = $victim;
+				$victim->getServer()->broadcastPacket($victim->getLevel()->getPlayers(), $light);
+				$victim->setHealth($victim->getHealth() - ($enchantmentLevel * 2));
 			}
 		}
 	}

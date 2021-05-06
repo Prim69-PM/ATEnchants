@@ -2,7 +2,8 @@
 
 namespace xPrim69x\ATEnchants;
 use pocketmine\item\enchantment\Enchantment;
-use xPrim69x\ATEnchants\enchants\sword\{BleedEnchant,
+use xPrim69x\ATEnchants\enchants\sword\{
+	BleedEnchant,
 	DazeEnchant,
 	FrostEnchant,
 	HadesEnchant,
@@ -11,21 +12,22 @@ use xPrim69x\ATEnchants\enchants\sword\{BleedEnchant,
 	OOFEnchant,
 	PoisonEnchant,
 	UpliftEnchant,
-	ZeusEnchant};
-use xPrim69x\ATEnchants\enchants\armor\{AdrenalineEnchant,
+	ZeusEnchant
+};
+use xPrim69x\ATEnchants\enchants\armor\{
+	AdrenalineEnchant,
 	BunnyEnchant,
 	GearsEnchant,
 	GlowingEnchant,
 	OverlordEnchant,
-	ScorchEnchant};
+	ScorchEnchant
+};
 use xPrim69x\ATEnchants\enchants\bow\RelocateEnchant;
 use xPrim69x\ATEnchants\enchants\pickaxe\{
 	FeedEnchant
-	};
+};
 
 class CustomEnchantManager {
-
-	private static $main;
 
 	const SLOT_ARMOR = self::SLOT_HEAD | self::SLOT_TORSO | self::SLOT_LEGS | self::SLOT_FEET;
 	const SLOT_NONE = 0x0;
@@ -63,8 +65,7 @@ class CustomEnchantManager {
 		"feed" => 86,
 	];
 
-	public static function init(Main $main){
-		self::$main = $main;
+	public static function init(){
 
 		//Sword Enchants
 		Enchantment::registerEnchantment(new KaboomEnchant(69,"Kaboom",self::RARITY_MYTHIC, self::SLOT_SWORD, self::SLOT_NONE, Main::$swordEnchants["Kaboom"]));

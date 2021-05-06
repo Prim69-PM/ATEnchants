@@ -9,6 +9,10 @@ use pocketmine\item\Item;
 use pocketmine\item\Pickaxe;
 use pocketmine\item\Sword;
 use pocketmine\plugin\PluginBase;
+use function file_get_contents;
+use function in_array;
+use function is_int;
+use function json_decode;
 
 class Main extends PluginBase {
 
@@ -46,15 +50,13 @@ class Main extends PluginBase {
 	public $bleeding = [];
 
 	public function onEnable(){
-
 		$this->saveResource("maxlevels.json");
 		$this->saveLevels();
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 		$this->getServer()->getCommandMap()->register($this->getName(), new EnchantCommand());
-		CustomEnchantManager::init($this);
+		CustomEnchantManager::init();
 		self::$instance = $this;
-
 	}
 
 	//Roman numeral conversion function by BoomYourBang
@@ -83,7 +85,7 @@ class Main extends PluginBase {
 		return self::$instance;
 	}
 
-	public static function getType(Item $item, bool $type = true){
+	public static function getType(Item $item, bool $type = true) : ?int {
 		if($item instanceof Sword) return 0x10;
 		if($item instanceof Bow) return 0x20;
 		if($item instanceof Pickaxe) return 0x400;
@@ -97,7 +99,7 @@ class Main extends PluginBase {
 		return null;
 	}
 
-	public static function canEnchant(Item $item, Enchantment $enchantment){
+	public static function canEnchant(Item $item, Enchantment $enchantment) : bool {
 		$type = self::getType($item);
 		if($enchantment->getPrimaryItemFlags() == $type) return true;
 		if($item instanceof Armor){

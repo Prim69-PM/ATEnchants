@@ -8,6 +8,7 @@ use pocketmine\item\enchantment\MeleeWeaponEnchantment;
 use pocketmine\Player;
 use xPrim69x\ATEnchants\Main;
 use xPrim69x\ATEnchants\tasks\BleedTask;
+use function mt_rand;
 
 class BleedEnchant extends MeleeWeaponEnchantment {
 
@@ -19,10 +20,10 @@ class BleedEnchant extends MeleeWeaponEnchantment {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $d, Entity $player, int $enchantmentLevel) : void{
-		if ($player instanceof Player && $d instanceof Player) {
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 40) <= $enchantmentLevel) {
-				Main::getInstance()->getScheduler()->scheduleRepeatingTask(new BleedTask(Main::getInstance(), $player), 60);
+				Main::getInstance()->getScheduler()->scheduleRepeatingTask(new BleedTask(Main::getInstance(), $victim), 60);
 			}
 		}
 	}
