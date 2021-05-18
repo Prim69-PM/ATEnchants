@@ -14,23 +14,32 @@ use xPrim69x\ATEnchants\types\ToggledArmorEnchant;
 
 class EventListener implements Listener {
 
+	/**
+	 * @param EntityArmorChangeEvent $event
+	 * @ignoreCancelled
+	 */
 	public function onArmorChange(EntityArmorChangeEvent $event){
-		if($event->isCancelled()) return;
 		ToggledArmorEnchant::onToggle($event);
 	}
 
+	/**
+	 * @param EntityDamageEvent $event
+	 * @ignoreCancelled
+	 */
 	public function onDamage(EntityDamageEvent $event){
-		if($event->isCancelled()) return;
 		RandomArmorEnchant::onDamage($event);
+	}
+
+	/**
+	 * @param BlockBreakEvent $event
+	 * @ignoreCancelled
+	 */
+	public function onBreak(BlockBreakEvent $event){
+		PickaxeEnchant::onBreak($event);
 	}
 
 	public function onShoot(ProjectileHitBlockEvent $event){
 		BowEnchant::onHitBlock($event);
-	}
-
-	public function onBreak(BlockBreakEvent $event){
-		if($event->isCancelled()) return;
-		PickaxeEnchant::onBreak($event);
 	}
 	
 }

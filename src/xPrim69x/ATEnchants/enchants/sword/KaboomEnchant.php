@@ -28,7 +28,7 @@ class KaboomEnchant extends MeleeWeaponEnchantment {
 				}
 				$victim->getLevel()->addParticle(new HugeExplodeParticle($victim));
 				$victim->getLevel()->broadcastLevelSoundEvent($victim, 48);
-				$victim->knockBack($attacker, 0, $victim->x - $attacker->x, $victim->z - $attacker->z, $level);
+				$victim->knockBack($attacker, 0, $victim->x - $attacker->x, $victim->z - $attacker->z, $level * 1.1);
 				if ($victim->getHealth() < 10) {
 					$victim->setHealth($victim->getHealth() - ($enchantmentLevel * 1.33));
 				} else {

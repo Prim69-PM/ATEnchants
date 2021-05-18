@@ -22,7 +22,7 @@ class BleedEnchant extends MeleeWeaponEnchantment {
 
 	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
 		if ($victim instanceof Player && $attacker instanceof Player) {
-			if (mt_rand(1, 40) <= $enchantmentLevel) {
+			if (mt_rand(1, 40) <= $enchantmentLevel && !isset(Main::getInstance()->bleeding[$victim->getName()])) {
 				Main::getInstance()->getScheduler()->scheduleRepeatingTask(new BleedTask(Main::getInstance(), $victim), 60);
 			}
 		}

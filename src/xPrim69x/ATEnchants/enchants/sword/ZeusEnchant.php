@@ -21,12 +21,12 @@ class ZeusEnchant extends MeleeWeaponEnchantment {
 
 	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
 		if ($victim instanceof Player && $attacker instanceof Player) {
-			if (mt_rand(1, 40) <= ($enchantmentLevel * 2)) {
+			if (mt_rand(1, 45) <= ($enchantmentLevel * 2)) {
 				$light = new AddActorPacket();
 				$light->type = "minecraft:lightning_bolt";
 				$light->entityRuntimeId = Entity::$entityCount++;
 				$light->position = $victim;
-				$victim->getServer()->broadcastPacket($victim->getLevel()->getPlayers(), $light);
+				$victim->getServer()->broadcastPacket($victim->getViewers(), $light);
 				$victim->setHealth($victim->getHealth() - ($enchantmentLevel * 2));
 			}
 		}
