@@ -10,7 +10,7 @@ use function mt_rand;
 
 class ScorchEnchant extends RandomArmorEnchant {
 
-	public function execute(Player $player, ?Player $damager, Armor $armor){
+	public function execute(Player $player, ?Player $damager, Armor $armor) : void {
 		if(is_null($damager)) return;
 		$level = $armor->getEnchantment(84)->getLevel();
 		if (mt_rand(1, 50) <= $level) $damager->setOnFire($level);

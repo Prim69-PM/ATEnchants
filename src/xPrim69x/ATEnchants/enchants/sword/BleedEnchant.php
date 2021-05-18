@@ -12,15 +12,15 @@ use function mt_rand;
 
 class BleedEnchant extends MeleeWeaponEnchantment {
 
-	public function isApplicableTo(Entity $victim) : bool{
+	public function isApplicableTo(Entity $victim) : bool {
 		return $victim instanceof Living;
 	}
 
-	public function getDamageBonus(int $enchantmentLevel) : float{
+	public function getDamageBonus(int $enchantmentLevel) : float {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void {
 		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 40) <= $enchantmentLevel && !isset(Main::getInstance()->bleeding[$victim->getName()])) {
 				Main::getInstance()->getScheduler()->scheduleRepeatingTask(new BleedTask(Main::getInstance(), $victim), 60);

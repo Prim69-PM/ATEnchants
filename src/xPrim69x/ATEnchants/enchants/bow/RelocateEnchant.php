@@ -9,7 +9,7 @@ use xPrim69x\ATEnchants\types\BowEnchant;
 
 class RelocateEnchant extends BowEnchant {
 
-	public function execute(Player $player, Item $item, Arrow $arrow){
+	public function execute(Player $player, Item $item, Arrow $arrow) : void {
 		if($player->getLevel() === $arrow->getLevel()) $player->teleport($arrow->getPosition());
 	}
 

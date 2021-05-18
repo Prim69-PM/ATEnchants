@@ -9,11 +9,11 @@ use pocketmine\Player;
 
 abstract class ToggledArmorEnchant extends Enchantment {
 
-	abstract public function onEquip(Player $player, Item $item);
+	abstract public function onEquip(Player $player, Item $item) : void ;
 
-	abstract public function onDequip(Player $player, Item $item);
+	abstract public function onDequip(Player $player, Item $item) : void ;
 
-	public static function onToggle(EntityArmorChangeEvent $event){
+	public static function onToggle(EntityArmorChangeEvent $event) : void {
 		$player = $event->getEntity();
 		if(!$player instanceof Player) return;
 		$item = $event->getNewItem();

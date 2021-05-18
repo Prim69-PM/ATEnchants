@@ -8,11 +8,11 @@ use xPrim69x\ATEnchants\types\ToggledArmorEnchant;
 
 class OverlordEnchant extends ToggledArmorEnchant {
 
-	public function onEquip(Player $player, Item $item){
+	public function onEquip(Player $player, Item $item) : void {
 		$player->setMaxHealth($player->getMaxHealth() + ($item->getEnchantment(82)->getLevel() * 2));
 	}
 
-	public function onDequip(Player $player, Item $item){
+	public function onDequip(Player $player, Item $item) : void {
 		if ($player->getMaxHealth() > 20) {
 			$player->setMaxHealth($player->getMaxHealth() - ($item->getEnchantment(82)->getLevel() * 2));
 		}

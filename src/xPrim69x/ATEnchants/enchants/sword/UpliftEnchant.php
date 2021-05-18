@@ -11,15 +11,15 @@ use function mt_rand;
 
 class UpliftEnchant extends MeleeWeaponEnchantment {
 
-	public function isApplicableTo(Entity $victim) : bool{
+	public function isApplicableTo(Entity $victim) : bool {
 		return $victim instanceof Living;
 	}
 
-	public function getDamageBonus(int $enchantmentLevel) : float{
+	public function getDamageBonus(int $enchantmentLevel) : float {
 		return 0;
 	}
 
-	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void{
+	public function onPostAttack(Entity $attacker, Entity $victim, int $enchantmentLevel) : void {
 		if ($victim instanceof Player && $attacker instanceof Player) {
 			if (mt_rand(1, 23) <= $enchantmentLevel) {
 				$levels = [2, 1.8, 1.5, 1.5, 1.3, 2.5, 2.9];

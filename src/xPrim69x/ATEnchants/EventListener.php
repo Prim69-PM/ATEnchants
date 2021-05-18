@@ -18,7 +18,7 @@ class EventListener implements Listener {
 	 * @param EntityArmorChangeEvent $event
 	 * @ignoreCancelled
 	 */
-	public function onArmorChange(EntityArmorChangeEvent $event){
+	public function onArmorChange(EntityArmorChangeEvent $event) : void {
 		ToggledArmorEnchant::onToggle($event);
 	}
 
@@ -26,7 +26,7 @@ class EventListener implements Listener {
 	 * @param EntityDamageEvent $event
 	 * @ignoreCancelled
 	 */
-	public function onDamage(EntityDamageEvent $event){
+	public function onDamage(EntityDamageEvent $event) : void {
 		RandomArmorEnchant::onDamage($event);
 	}
 
@@ -34,11 +34,11 @@ class EventListener implements Listener {
 	 * @param BlockBreakEvent $event
 	 * @ignoreCancelled
 	 */
-	public function onBreak(BlockBreakEvent $event){
+	public function onBreak(BlockBreakEvent $event) : void {
 		PickaxeEnchant::onBreak($event);
 	}
 
-	public function onShoot(ProjectileHitBlockEvent $event){
+	public function onShoot(ProjectileHitBlockEvent $event) : void {
 		BowEnchant::onHitBlock($event);
 	}
 	
