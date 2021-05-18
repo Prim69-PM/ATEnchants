@@ -65,7 +65,7 @@ class CustomEnchantManager {
 		"feed" => 86,
 	];
 
-	public static function init(){
+	public static function init() : void {
 
 		//Sword Enchants
 		Enchantment::registerEnchantment(new KaboomEnchant(69,"Kaboom",self::RARITY_MYTHIC, self::SLOT_SWORD, self::SLOT_NONE, Main::$swordEnchants["Kaboom"]));

@@ -10,9 +10,9 @@ use pocketmine\Player;
 
 abstract class RandomArmorEnchant extends Enchantment {
 
-	abstract public function execute(Player $player, ?Player $damager, Armor $armor);
+	abstract public function execute(Player $player, ?Player $damager, Armor $armor) : void ;
 
-	public static function onDamage(EntityDamageEvent $event){
+	public static function onDamage(EntityDamageEvent $event) : void {
 		$player = $event->getEntity();
 		if(!$player instanceof Player) return;
 		$damager = null;

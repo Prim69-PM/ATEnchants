@@ -9,9 +9,9 @@ use pocketmine\Player;
 
 abstract class PickaxeEnchant extends Enchantment {
 
-	abstract public function execute(Player $player, Item $item);
+	abstract public function execute(Player $player, Item $item) : void ;
 
-	public static function onBreak(BlockBreakEvent $event){
+	public static function onBreak(BlockBreakEvent $event) : void {
 		$player = $event->getPlayer();
 		$item = $event->getItem();
 		foreach($item->getEnchantments() as $enchant){

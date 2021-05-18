@@ -16,6 +16,7 @@ use function json_decode;
 
 class Main extends PluginBase {
 
+	/** @var array<string, int> */
 	public static $swordEnchants = [
 		"Kaboom" => 3,
 		"Zeus" => 3,
@@ -29,6 +30,7 @@ class Main extends PluginBase {
 		"OOF" => 1
 	];
 
+	/** @var array<string, int> */
 	public static $armorEnchants = [
 		"Bunny" => 3,
 		"Gears" => 2,
@@ -38,18 +40,23 @@ class Main extends PluginBase {
 		"Adrenaline" => 1,
 	];
 
+	/** @var array<string, int> */
 	const BOW_ENCHANTS = [
 		"Relocate" => 1
 	];
 
+	/** @var array<string, int> */
 	const PICKAXE_ENCHANTS = [
 		"Feed" => 1
 	];
 
+	/** @var self */
 	public static $instance;
+
+	/** @var array<string, int> */
 	public $bleeding = [];
 
-	public function onEnable(){
+	public function onEnable() : void {
 		$this->saveResource("maxlevels.json");
 		$this->saveLevels();
 
@@ -60,7 +67,7 @@ class Main extends PluginBase {
 	}
 
 	//Roman numeral conversion function by BoomYourBang
-	public static function lvlToRomanNum(int $level) : string{
+	public static function lvlToRomanNum(int $level) : string {
 		$romanNumeralConversionTable = [
 			'X'  => 10,
 			'IX' => 9,
@@ -109,7 +116,7 @@ class Main extends PluginBase {
 		return false;
 	}
 
-	public function saveLevels(){
+	public function saveLevels() : void {
 		$data = json_decode(file_get_contents($this->getDataFolder() . "maxlevels.json"), true);
 		foreach(self::$swordEnchants as $name => $level){
 			if(isset($data["swordlevels"][$name]) && is_int($data["swordlevels"][$name])){

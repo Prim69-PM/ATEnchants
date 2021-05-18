@@ -39,7 +39,7 @@ class EnchantCommand extends Command implements PluginIdentifiableCommand {
 		$this->main = $main;
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : void {
 		if(!$sender instanceof Player){
 			$sender->sendMessage(TF::DARK_RED . "Please use this command in-game!");
 			return;

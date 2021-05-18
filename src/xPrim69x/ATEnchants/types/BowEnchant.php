@@ -11,13 +11,13 @@ use pocketmine\Player;
 
 abstract class BowEnchant extends Enchantment {
 
-	abstract public function execute(Player $player, Item $item, Arrow $arrow);
+	abstract public function execute(Player $player, Item $item, Arrow $arrow) : void ;
 
-	public static function onShoot(EntityShootBowEvent $event){
+	public static function onShoot(EntityShootBowEvent $event) : void {
 		//
 	}
 
-	public static function onHitBlock(ProjectileHitBlockEvent $event){
+	public static function onHitBlock(ProjectileHitBlockEvent $event) : void {
 		$arrow = $event->getEntity();
 		if (!$arrow instanceof Arrow) return;
 		$player = $arrow->getOwningEntity();
