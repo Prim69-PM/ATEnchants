@@ -10,9 +10,13 @@ use xPrim69x\ATEnchants\Main;
 
 class BleedTask extends Task {
 
+	/** @var Main */
 	public $main;
 
+	/** @var Player */
 	public $player;
+
+	/** @var int */
 	public $runs = 10;
 
 	public function __construct(Main $main, Player $player){
