@@ -53,7 +53,7 @@ class Main extends PluginBase {
 	/** @var self */
 	public static $instance;
 
-	/** @var array<string, int> */
+	/** @var array<string, bool> */
 	public $bleeding = [];
 
 	public function onEnable() : void {
