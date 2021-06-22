@@ -5,7 +5,7 @@ website: https://github.com/Prim69/ATEnchants
 version: 1.2.0
 main: xPrim69x\ATEnchants\Main
 api: [3.0.0]
-mcpe-protocol: [408, 419, 422, 428, 431]
+mcpe-protocol: [408, 419, 422, 428, 431, 433, 434, 435, 437, 440]
 permissions:
   atenchant.command:
     default: op
