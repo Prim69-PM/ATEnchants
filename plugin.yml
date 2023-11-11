@@ -2,9 +2,9 @@ name: ATEnchants
 author: xPrim69x
 description: My Custom Enchants plugin made to replicate AvengeTechs prison enchants.
 website: https://github.com/Prim69/ATEnchants
-version: 1.2.0
+version: 1.0.0
 main: xPrim69x\ATEnchants\Main
-api: [3.0.0]
+api: [4.0.0]
 mcpe-protocol: [408, 419, 422, 428, 431, 433, 434, 435, 437, 440]
 permissions:
   atenchant.command:
